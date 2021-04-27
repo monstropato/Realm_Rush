@@ -25,6 +25,7 @@ public class EnemyMovement : MonoBehaviour
             Vector3 endPos = waypoint.transform.position;
             float travelPercent = 0f;
 
+            transform.LookAt(endPos);
             while (travelPercent < 1)
             {
                 transform.position = Vector3.Lerp(startPos, endPos, travelPercent);
