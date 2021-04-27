@@ -19,8 +19,13 @@ public class CoordinateLabeler : MonoBehaviour
 
     private void Update()
     {
-        if (!Application.isPlaying)
+        if (Application.isPlaying)
         {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            gameObject.SetActive(true);
             DisplayCoordinates();
             UpdateObjectName();
         }

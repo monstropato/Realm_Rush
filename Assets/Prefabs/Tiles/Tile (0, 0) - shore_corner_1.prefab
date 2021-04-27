@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -2432090755550338912, guid: fa1397209d9adee4db5f8a2bba8327f0, type: 3}
+    - target: {fileID: 4456856879812548225, guid: c789fb1ce68db7841807cefddee557e0, type: 3}
+      propertyPath: isClickable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6506024328865544416, guid: c789fb1ce68db7841807cefddee557e0, type: 3}
       propertyPath: m_Name
       value: Tile (0, 0) - shore_corner_1

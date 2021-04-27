@@ -18,21 +18,20 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator FollowPatch()
     {
-        //transform.position = enemy.patch[0].transform.position;
+        transform.position = enemy.patch[0].transform.position;
         foreach(Waypoint waypoint in enemy.patch)
         {
             Vector3 startPos = transform.position;
             Vector3 endPos = waypoint.transform.position;
             float travelPercent = 0f;
 
-            transform.LookAt(endPos);
-
             while (travelPercent < 1)
             {
-                travelPercent += Time.deltaTime * speed;
                 transform.position = Vector3.Lerp(startPos, endPos, travelPercent);
+                travelPercent += Time.deltaTime * speed;
                 yield return new WaitForEndOfFrame();
             }
         }
+        transform.position = enemy.patch[enemy.patch.Count-1].transform.position;
     }
 }
