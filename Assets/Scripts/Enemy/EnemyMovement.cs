@@ -5,23 +5,47 @@ using UnityEngine;
 internal class EnemyMovement : MonoBehaviour
 {
     //CONFIG PARAMS
-    [SerializeField] internal List<Waypoint> patch = new List<Waypoint>();
     [SerializeField][Range(0f,5f)] float speed =1f;
+
+    //STATS
+    List<Waypoint> path = new List<Waypoint>();
 
     //CACHED CLASSES REFERENCES
     Enemy enemy;
+
+    //CACHED STRINGS
+    const string TAG_PATH = "Path";
+
 
     internal void CustomStart()
     {
         enemy = GetComponent<Enemy>();
 
+        FindPath();
+        ReturnToStart();
         StartCoroutine(FollowPatch());
+    }
+
+    private void FindPath()
+    {
+        path.Clear();
+        GameObject parent = GameObject.FindGameObjectWithTag(TAG_PATH);
+
+        foreach(Transform child in parent.transform)
+        {
+            path.Add(child.GetComponent<Waypoint>());
+        }
+    }
+
+    private void ReturnToStart()
+    {
+        transform.position = path[0].transform.position;
+        path.Remove(path[0]);
     }
 
     private IEnumerator FollowPatch()
     {
-        transform.position = patch[0].transform.position;
-        foreach(Waypoint waypoint in patch)
+        foreach(Waypoint waypoint in path)
         {
             Vector3 startPos = transform.position;
             Vector3 endPos = waypoint.transform.position;
@@ -35,6 +59,6 @@ internal class EnemyMovement : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
-        transform.position = patch[patch.Count-1].transform.position;
+        transform.position = path[path.Count-1].transform.position;
     }
 }
