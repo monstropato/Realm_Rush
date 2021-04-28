@@ -1,13 +1,13 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
     //CONFIG PARAMS
-    [SerializeField] internal List<Waypoint> patch = new List<Waypoint>();
 
     //CACHED CLASSES REFERENCES
     internal EnemyMovement enemyMovement;
+    internal EnemyHealth enemyHealth;
+    internal EnemyCollider enemyCollider;
 
     private void Start()
     {
@@ -18,10 +18,14 @@ public class Enemy : MonoBehaviour
     private void GetCachedReferences()
     {
         enemyMovement = GetComponent<EnemyMovement>();
+        enemyHealth = GetComponent<EnemyHealth>();
+        enemyCollider = GetComponent<EnemyCollider>();
     }
 
     private void StartCustomStarts()
     {
         enemyMovement.CustomStart();
+        enemyHealth.CustomStart();
+        enemyCollider.CustomStart();
     }
 }

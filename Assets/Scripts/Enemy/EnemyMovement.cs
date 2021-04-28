@@ -1,9 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+internal class EnemyMovement : MonoBehaviour
 {
     //CONFIG PARAMS
+    [SerializeField] internal List<Waypoint> patch = new List<Waypoint>();
     [SerializeField][Range(0f,5f)] float speed =1f;
 
     //CACHED CLASSES REFERENCES
@@ -18,8 +20,8 @@ public class EnemyMovement : MonoBehaviour
 
     private IEnumerator FollowPatch()
     {
-        transform.position = enemy.patch[0].transform.position;
-        foreach(Waypoint waypoint in enemy.patch)
+        transform.position = patch[0].transform.position;
+        foreach(Waypoint waypoint in patch)
         {
             Vector3 startPos = transform.position;
             Vector3 endPos = waypoint.transform.position;
@@ -33,6 +35,6 @@ public class EnemyMovement : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
-        transform.position = enemy.patch[enemy.patch.Count-1].transform.position;
+        transform.position = patch[patch.Count-1].transform.position;
     }
 }

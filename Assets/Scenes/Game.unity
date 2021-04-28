@@ -2178,6 +2178,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9157685355011069729, guid: 177ab29a3d3f0fd4ba47c966ed278d13, type: 3}
+      propertyPath: patch.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9157685355011069729, guid: 177ab29a3d3f0fd4ba47c966ed278d13, type: 3}
+      propertyPath: patch.Array.data[0]
+      value: 
+      objectReference: {fileID: 268887146}
+    - target: {fileID: 9157685355011069729, guid: 177ab29a3d3f0fd4ba47c966ed278d13, type: 3}
+      propertyPath: patch.Array.data[1]
+      value: 
+      objectReference: {fileID: 563372424}
+    - target: {fileID: 9157685355011069729, guid: 177ab29a3d3f0fd4ba47c966ed278d13, type: 3}
+      propertyPath: patch.Array.data[2]
+      value: 
+      objectReference: {fileID: 25278737}
+    - target: {fileID: 9157685355011069729, guid: 177ab29a3d3f0fd4ba47c966ed278d13, type: 3}
+      propertyPath: patch.Array.data[3]
+      value: 
+      objectReference: {fileID: 157849588}
+    - target: {fileID: 9157685355011069729, guid: 177ab29a3d3f0fd4ba47c966ed278d13, type: 3}
+      propertyPath: patch.Array.data[4]
+      value: 
+      objectReference: {fileID: 556196349}
+    - target: {fileID: 9157685355011069729, guid: 177ab29a3d3f0fd4ba47c966ed278d13, type: 3}
+      propertyPath: patch.Array.data[5]
+      value: 
+      objectReference: {fileID: 49018591}
+    - target: {fileID: 9157685355011069729, guid: 177ab29a3d3f0fd4ba47c966ed278d13, type: 3}
+      propertyPath: patch.Array.data[6]
+      value: 
+      objectReference: {fileID: 454058417}
     - target: {fileID: 9157685355011069731, guid: 177ab29a3d3f0fd4ba47c966ed278d13, type: 3}
       propertyPath: m_Name
       value: Ram
