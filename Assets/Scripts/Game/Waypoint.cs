@@ -4,11 +4,14 @@ public class Waypoint : MonoBehaviour
 {
     //CONFIG PARAMS
     [SerializeField] GameObject towerPrefab;
-    [SerializeField] bool isClickable;
+    [SerializeField] bool isPlaceable;
+
+    //GET PARAMS
+    public bool IsPlaceable { get { return isPlaceable; } }
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0) && isClickable)
+        if (Input.GetMouseButtonDown(0) && isPlaceable)
         {
             InstantiateTower();
         }
@@ -17,6 +20,6 @@ public class Waypoint : MonoBehaviour
     private void InstantiateTower()
     {
         Instantiate(towerPrefab, transform.position, Quaternion.identity);
-        isClickable = false;
+        isPlaceable = false;
     }
 }

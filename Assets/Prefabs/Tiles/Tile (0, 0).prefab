@@ -90,8 +90,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6506024328865544419}
-  - component: {fileID: 4456856879812548225}
   - component: {fileID: 8396308003967711863}
+  - component: {fileID: 4456856879812548225}
   m_Layer: 0
   m_Name: Tile (0, 0)
   m_TagString: Untagged
@@ -115,20 +115,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4456856879812548225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6506024328865544416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40d5ed3dea50ed34e9da95073125c4df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 3219458064393657486, guid: 8a965e088bae16643aab3d07ccfd5e2e, type: 3}
-  isClickable: 1
 --- !u!65 &8396308003967711863
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -142,6 +128,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 0.625, z: 10}
   m_Center: {x: 0, y: -0.3, z: 0}
+--- !u!114 &4456856879812548225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6506024328865544416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d5ed3dea50ed34e9da95073125c4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 3219458064393657486, guid: 8a965e088bae16643aab3d07ccfd5e2e, type: 3}
+  isPlaceable: 1
 --- !u!1 &6506024329773292331
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 6506024329773292330}
   - component: {fileID: 6506024329773292324}
   - component: {fileID: 6506024329773292325}
-  - component: {fileID: 5222192134417858694}
+  - component: {fileID: 3951615132212780118}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_maskType: 0
   _SortingLayerID: 0
   _SortingOrder: 0
---- !u!114 &5222192134417858694
+--- !u!114 &3951615132212780118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -324,3 +324,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ecbe15675c18c4bac7804ce4719988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  blockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

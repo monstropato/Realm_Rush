@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: isClickable
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4456856879812548225, guid: c789fb1ce68db7841807cefddee557e0, type: 3}
+      propertyPath: isPlaceable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6506024328865544416, guid: c789fb1ce68db7841807cefddee557e0, type: 3}
       propertyPath: m_Name
       value: Tile (0, 0) - shore_corner_2
