@@ -9,11 +9,12 @@ public class Enemy : MonoBehaviour
     internal EnemyHealth enemyHealth;
     internal EnemyCollider enemyCollider;
 
-    private void Start()
+    private void OnEnable()
     {
         GetCachedReferences();
         StartCustomStarts();
     }
+
 
     private void GetCachedReferences()
     {
@@ -27,5 +28,15 @@ public class Enemy : MonoBehaviour
         enemyMovement.CustomStart();
         enemyHealth.CustomStart();
         enemyCollider.CustomStart();
+    }
+
+    internal void Spawn()
+    {
+        gameObject.SetActive(true);
+    }
+
+    internal void Despawn()
+    {
+        gameObject.SetActive(false);
     }
 }

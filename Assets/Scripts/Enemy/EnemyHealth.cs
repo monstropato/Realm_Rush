@@ -27,7 +27,7 @@ internal class EnemyHealth : MonoBehaviour
         }
         else
         {
-            Despawn();
+            enemy.Despawn();
         }
     }
 
@@ -35,10 +35,4 @@ internal class EnemyHealth : MonoBehaviour
     {
         //nothing yet
     }
-
-    private void Despawn()
-    {
-        Destroy(gameObject);
-    }
-
 }

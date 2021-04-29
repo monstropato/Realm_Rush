@@ -60,5 +60,6 @@ internal class EnemyMovement : MonoBehaviour
             }
         }
         transform.position = path[path.Count-1].transform.position;
+        enemy.Despawn();
     }
 }
