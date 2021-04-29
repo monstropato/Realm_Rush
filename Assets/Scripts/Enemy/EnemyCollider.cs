@@ -20,7 +20,7 @@ internal class EnemyCollider: MonoBehaviour
         Tower tower = other.GetComponentInParent<Tower>();
         if (tower)
         {
-            int damage = tower.towerDamage.GetDamage();
+            int damage = tower.towerDamage.Damage;
             enemy.enemyHealth.ManageDamage(damage);
         }
     }

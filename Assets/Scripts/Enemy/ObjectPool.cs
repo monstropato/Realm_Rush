@@ -5,7 +5,7 @@ public class ObjectPool : MonoBehaviour
 {
     //CONFIG PARAMS
     [SerializeField] float spawnTIme = 1f;
-    [SerializeField] Enemy enemy;
+    [SerializeField] Enemy enemyPrefab;
     [SerializeField] int poolSize = 5;
 
     //STATE
@@ -28,7 +28,8 @@ public class ObjectPool : MonoBehaviour
 
         for (int i = 0; i < pool.Length; i++)
         {
-            pool[i] = Instantiate(enemy, transform);
+            pool[i] = Instantiate(enemyPrefab, transform);
+            pool[i].gameObject.name = $"{enemyPrefab.name} ({i})";
             pool[i].Despawn();
         }
     }

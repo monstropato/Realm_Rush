@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6884967606932822340}
   - component: {fileID: 1113932545829005734}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Projectile Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4852,6 +4852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 6131056645070147807}
+  projectile: {fileID: 6884967606932822340}
 --- !u!114 &3068734968264813530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4864,7 +4865,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a88c0a7bc064bf4ab9f1bc5941e66f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookOffset: {x: 0, y: 4, z: 0}
 --- !u!114 &2398927448222791223
 MonoBehaviour:
   m_ObjectHideFlags: 0

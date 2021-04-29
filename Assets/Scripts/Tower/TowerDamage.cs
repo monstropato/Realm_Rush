@@ -7,13 +7,11 @@ internal class TowerDamage: MonoBehaviour
     //CACHED CLASSES REFERENCES
     Tower tower;
 
+    //GET PARAMS
+    internal int Damage { get { return damage; } }
+
     internal void CustomStart()
     {
         tower = GetComponent<Tower>();
-    }
-
-    internal int GetDamage()
-    {
-        return damage;
     }
 }

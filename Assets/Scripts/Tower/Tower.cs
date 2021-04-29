@@ -4,6 +4,7 @@ public class Tower : MonoBehaviour
 {
     //CONFIG PARAMS
     [SerializeField] internal GameObject weapon;
+    [SerializeField] internal ParticleSystem projectile;
 
     //CACHED CLASSES REFERENCES
     internal TowerTargetLocator targetLocator;
