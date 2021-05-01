@@ -3,6 +3,7 @@ using UnityEditor;
 using TMPro;
 
 [ExecuteAlways]
+[RequireComponent(typeof(TextMeshPro))]
 public class CoordinateLabeler : MonoBehaviour
 {
     //CONFIG PARAMS
@@ -36,7 +37,7 @@ public class CoordinateLabeler : MonoBehaviour
             UpdateObjectName();
         }
 
-        ColorCoordinates();
+        SetLabelcolor();
         ToggleLabels();
     }
 
@@ -50,10 +51,14 @@ public class CoordinateLabeler : MonoBehaviour
 
     private void DisplayCoordinates()
     {
-        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / EditorSnapSettings.move.x);
-        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / EditorSnapSettings.move.z);
+        if (Debug.isDebugBuild)
+        {
+            coordinates.x = Mathf.RoundToInt(transform.parent.position.x / EditorSnapSettings.move.x);
+            coordinates.y = Mathf.RoundToInt(transform.parent.position.z / EditorSnapSettings.move.z);
 
-        textCoordinates.text = $"{coordinates}";
+            textCoordinates.text = $"{coordinates}";
+        }
+        
     }
 
     private void UpdateObjectName()
@@ -61,7 +66,7 @@ public class CoordinateLabeler : MonoBehaviour
         transform.parent.name = $"Tile {coordinates}";
     }
 
-    private void ColorCoordinates()
+    private void SetLabelcolor()
     {
         if (waypoint.IsPlaceable)
         {

@@ -51,10 +51,4 @@ public class Enemy : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
-    internal void Die()
-    {
-        gameObject.SetActive(false);
-        enemyCurrency.RewardGold();
-    }
 }

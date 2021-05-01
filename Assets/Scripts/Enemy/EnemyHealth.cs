@@ -4,6 +4,7 @@ internal class EnemyHealth : MonoBehaviour
 {
     //CONFIG PARAMS
     [SerializeField] int initialHealth = 10;
+    [SerializeField] int difficultyRamp = 1;
 
     //STATS
     int health;
@@ -27,12 +28,19 @@ internal class EnemyHealth : MonoBehaviour
         }
         else
         {
-            enemy.Die();
+            Die();
         }
     }
 
     private void LoseHealth()
     {
         //nothing yet
+    }
+
+    internal void Die()
+    {
+        gameObject.SetActive(false);
+        enemy.enemyCurrency.RewardGold();
+        initialHealth += difficultyRamp;
     }
 }

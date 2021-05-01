@@ -59,10 +59,10 @@ internal class EnemyMovement : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
-        ReachEnd();
+        FinishPath();
     }
 
-    private void ReachEnd()
+    private void FinishPath()
     {
         transform.position = path[path.Count - 1].transform.position;
         enemy.Despawn();

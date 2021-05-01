@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Tower))]
 internal class TowerDamage: MonoBehaviour
 {
     //CONFIG PARAMS

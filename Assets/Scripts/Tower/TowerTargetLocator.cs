@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Tower))]
 internal class TowerTargetLocator : MonoBehaviour
 {
     [SerializeField] float range = 15f;
