@@ -4,6 +4,7 @@ internal class TowerDamage: MonoBehaviour
 {
     //CONFIG PARAMS
     [SerializeField] int damage = 2;
+
     //CACHED CLASSES REFERENCES
     Tower tower;
 
@@ -14,4 +15,11 @@ internal class TowerDamage: MonoBehaviour
     {
         tower = GetComponent<Tower>();
     }
+
+    internal void Attack(bool isActive)
+    {
+        var emissionModule = tower.projectile.emission;
+        emissionModule.enabled = isActive;
+    }
+
 }

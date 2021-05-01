@@ -48,18 +48,12 @@ internal class TowerTargetLocator : MonoBehaviour
         if (currentTarget)
         {
             tower.weapon.transform.LookAt(currentTarget.transform);
-            Attack(true);
+            tower.towerDamage.Attack(true);
         }
         else
         {
             tower.weapon.transform.rotation = defaultPose;
-            Attack(false);
+            tower.towerDamage.Attack(false);
         }
-    }
-
-    private void Attack(bool isActive)
-    {
-        var emissionModule = tower.projectile.emission;
-        emissionModule.enabled = isActive;
     }
 }

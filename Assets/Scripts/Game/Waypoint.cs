@@ -3,7 +3,7 @@ using UnityEngine;
 public class Waypoint : MonoBehaviour
 {
     //CONFIG PARAMS
-    [SerializeField] GameObject towerPrefab;
+    [SerializeField] Tower towerPrefab;
     [SerializeField] bool isPlaceable;
 
     //GET PARAMS
@@ -19,7 +19,8 @@ public class Waypoint : MonoBehaviour
 
     private void InstantiateTower()
     {
-        Instantiate(towerPrefab, transform.position, Quaternion.identity);
+        Tower newTower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
+        newTower.name = $"{towerPrefab.name} {GetComponentInChildren<CoordinateLabeler>().Coordinates}";
         isPlaceable = false;
     }
 }

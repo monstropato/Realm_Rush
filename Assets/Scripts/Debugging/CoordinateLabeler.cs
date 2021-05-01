@@ -14,7 +14,10 @@ public class CoordinateLabeler : MonoBehaviour
     Waypoint waypoint;
 
     //STATS
-    Vector2Int coordinates = new Vector2Int();
+    private Vector2Int coordinates = new Vector2Int();
+
+    //GET PARAMS
+    public Vector2Int Coordinates { get { return coordinates; } }
 
     private void Awake()
     {
