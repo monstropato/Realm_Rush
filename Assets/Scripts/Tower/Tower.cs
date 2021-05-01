@@ -10,7 +10,7 @@ public class Tower : MonoBehaviour
     internal TowerTargetLocator targetLocator;
     internal TowerDamage towerDamage;
 
-    private void Start()
+    private void Awake()
     {
         GetCachedReferences();
         StartCustomStarts();

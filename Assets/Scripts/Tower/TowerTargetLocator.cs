@@ -4,6 +4,7 @@ internal class TowerTargetLocator : MonoBehaviour
 {
     //STATES
     Enemy currentTarget;
+    Quaternion defaultPose;
 
     //CACHED CLASSES REFERENCES
     Tower tower;
@@ -12,6 +13,7 @@ internal class TowerTargetLocator : MonoBehaviour
     internal void CustomStart()
     {
         tower = GetComponent<Tower>();
+        defaultPose = tower.weapon.transform.rotation;
     }
 
     private void Update()
@@ -37,7 +39,6 @@ internal class TowerTargetLocator : MonoBehaviour
             }
         }
         currentTarget = closestTarget;
-        Debug.Log($"method finished, current target: {currentTarget.name}");
     }
 
     private void AimWeapon()
@@ -45,12 +46,12 @@ internal class TowerTargetLocator : MonoBehaviour
         if (currentTarget)
         {
             tower.weapon.transform.LookAt(currentTarget.transform);
-            //Attack(true);
+            Attack(true);
         }
         else
         {
-            tower.weapon.transform.LookAt(Vector3.back);
-            //Attack(false);
+            tower.weapon.transform.rotation = defaultPose;
+            Attack(false);
         }
     }
 
