@@ -1,5 +1,9 @@
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyMovement))]
+[RequireComponent(typeof(EnemyHealth))]
+[RequireComponent(typeof(EnemyCollider))]
+[RequireComponent(typeof(EnemyCurrency))]
 public class Enemy : MonoBehaviour
 {
     //CONFIG PARAMS
@@ -8,6 +12,10 @@ public class Enemy : MonoBehaviour
     internal EnemyMovement enemyMovement;
     internal EnemyHealth enemyHealth;
     internal EnemyCollider enemyCollider;
+    internal EnemyCurrency enemyCurrency;
+
+    //CACHED EXTERNAL REFERENCES
+    internal Bank bank;
 
     private void OnEnable()
     {
@@ -21,6 +29,9 @@ public class Enemy : MonoBehaviour
         enemyMovement = GetComponent<EnemyMovement>();
         enemyHealth = GetComponent<EnemyHealth>();
         enemyCollider = GetComponent<EnemyCollider>();
+        enemyCurrency = GetComponent<EnemyCurrency>();
+
+        bank = FindObjectOfType<Bank>();
     }
 
     private void StartCustomStarts()
@@ -28,6 +39,7 @@ public class Enemy : MonoBehaviour
         enemyMovement.CustomStart();
         enemyHealth.CustomStart();
         enemyCollider.CustomStart();
+        enemyCurrency.CustomStart();
     }
 
     internal void Spawn()
@@ -38,5 +50,11 @@ public class Enemy : MonoBehaviour
     internal void Despawn()
     {
         gameObject.SetActive(false);
+    }
+
+    internal void Die()
+    {
+        gameObject.SetActive(false);
+        enemyCurrency.RewardGold();
     }
 }

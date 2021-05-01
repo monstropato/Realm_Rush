@@ -6,21 +6,23 @@ public class Waypoint : MonoBehaviour
     [SerializeField] Tower towerPrefab;
     [SerializeField] bool isPlaceable;
 
+    //CACHED CLASSES REFERENCES
+    CoordinateLabeler coorLabeler;
+
     //GET PARAMS
     public bool IsPlaceable { get { return isPlaceable; } }
+
+    private void Start()
+    {
+        coorLabeler = GetComponentInChildren<CoordinateLabeler>();
+    }
 
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0) && isPlaceable)
         {
-            InstantiateTower();
+            bool isPlaced = towerPrefab.CreateTower(towerPrefab, transform.position, coorLabeler.Coordinates);
+            isPlaceable = !isPlaced;
         }
-    }
-
-    private void InstantiateTower()
-    {
-        Tower newTower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
-        newTower.name = $"{towerPrefab.name} {GetComponentInChildren<CoordinateLabeler>().Coordinates}";
-        isPlaceable = false;
     }
 }

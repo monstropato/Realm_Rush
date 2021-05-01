@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 9157685355011069729}
   - component: {fileID: 1519282052899603083}
   - component: {fileID: 2290040142863964173}
+  - component: {fileID: 7801815448677083901}
   m_Layer: 0
   m_Name: Ram
   m_TagString: Untagged
@@ -180,3 +181,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealth: 10
+--- !u!114 &7801815448677083901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9157685355011069731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5918b84f26a76d94da55619dd057c97e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldReward: 25
+  goldpenalty: 25

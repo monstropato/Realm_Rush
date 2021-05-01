@@ -21,5 +21,4 @@ internal class TowerDamage: MonoBehaviour
         var emissionModule = tower.projectile.emission;
         emissionModule.enabled = isActive;
     }
-
 }

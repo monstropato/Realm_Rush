@@ -59,7 +59,13 @@ internal class EnemyMovement : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
-        transform.position = path[path.Count-1].transform.position;
+        ReachEnd();
+    }
+
+    private void ReachEnd()
+    {
+        transform.position = path[path.Count - 1].transform.position;
         enemy.Despawn();
+        enemy.enemyCurrency.StealGold();
     }
 }

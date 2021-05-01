@@ -27,7 +27,7 @@ internal class EnemyHealth : MonoBehaviour
         }
         else
         {
-            enemy.Despawn();
+            enemy.Die();
         }
     }
 
