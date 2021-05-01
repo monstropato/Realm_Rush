@@ -2,6 +2,8 @@ using UnityEngine;
 
 internal class TowerTargetLocator : MonoBehaviour
 {
+    [SerializeField] float range = 15f;
+
     //STATES
     Enemy currentTarget;
     Quaternion defaultPose;
@@ -28,11 +30,11 @@ internal class TowerTargetLocator : MonoBehaviour
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         Enemy closestTarget = null;
         float maxDistance = Mathf.Infinity;
-        foreach(Enemy enemy in enemies)
+        foreach (Enemy enemy in enemies)
         {
             float targetDistance = Vector3.Distance(transform.position, enemy.transform.position);
 
-            if(targetDistance < maxDistance)
+            if (targetDistance < maxDistance && targetDistance <= range)
             {
                 closestTarget = enemy;
                 maxDistance = targetDistance;

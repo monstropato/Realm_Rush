@@ -1555,6 +1555,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504861317eb82484484480c75c291cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnTime: 2
+  enemyPrefab: {fileID: 9157685355011069742, guid: 177ab29a3d3f0fd4ba47c966ed278d13, type: 3}
+  poolSize: 2
 --- !u!4 &1768151980
 Transform:
   m_ObjectHideFlags: 0
