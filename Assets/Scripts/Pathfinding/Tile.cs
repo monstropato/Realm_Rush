@@ -41,7 +41,8 @@ public class Tile : MonoBehaviour
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0) &&
-            gridManager.GetNode(coordinates).isWalkable && !pathfinder.WillBlockPath(coordinates))
+            gridManager.GetNode(coordinates).isWalkable &&
+            !pathfinder.WillBlockPath(coordinates))
         {
             bool isSucessful = towerPrefab.CreateTower(towerPrefab, transform.position, coorLabeler.Coordinates);
             if (isSucessful)

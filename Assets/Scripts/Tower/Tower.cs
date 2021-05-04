@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Tower : MonoBehaviour
     [SerializeField] internal ParticleSystem projectile;
     [Header("Instantiation")]
     [SerializeField] internal int cost = 75;
+    [SerializeField] internal float buildTime = 1f;
 
     //CACHED CLASSES REFERENCES
     internal TowerTargetLocator targetLocator;
@@ -20,6 +22,7 @@ public class Tower : MonoBehaviour
     {
         GetCachedReferences();
         StartCustomStarts();
+        StartCoroutine(Build());
     }
 
     private void GetCachedReferences()
@@ -54,5 +57,12 @@ public class Tower : MonoBehaviour
             Debug.Log("Not enough gold");
             return false; 
         }
+    }
+
+    private IEnumerator Build()
+    {
+        weapon.SetActive(false);
+        yield return new WaitForSeconds(buildTime);
+        weapon.SetActive(true);
     }
 }
