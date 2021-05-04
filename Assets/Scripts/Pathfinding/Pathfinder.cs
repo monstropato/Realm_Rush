@@ -44,6 +44,7 @@ public class Pathfinder : MonoBehaviour
         startNode = gridManager.Grid[startCoordinates];
         destinationNode = gridManager.Grid[destinationCoordinates];
     }
+
     void Start()
     {
         GetNewPath();
@@ -143,5 +144,10 @@ public class Pathfinder : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void NotifyReceivers()
+    {
+        BroadcastMessage("RecalculatePath", SendMessageOptions.DontRequireReceiver);
     }
 }

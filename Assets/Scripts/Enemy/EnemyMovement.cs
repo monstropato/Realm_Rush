@@ -18,12 +18,12 @@ internal class EnemyMovement : MonoBehaviour
     {
         enemy = GetComponent<Enemy>();
 
-        FindPath();
+        RecalculatePath();
         ReturnToStart();
         StartCoroutine(FollowPath());
     }
 
-    private void FindPath()
+    private void RecalculatePath()
     {
         path.Clear();
         path = enemy.pathfinder.GetNewPath();
@@ -32,14 +32,14 @@ internal class EnemyMovement : MonoBehaviour
     private void ReturnToStart()
     {
         transform.position = enemy.gridManager.GetPositionFromCoordinates(enemy.pathfinder.StartNode.coordinates);
-        path.Remove(path[0]);
+        transform.LookAt(enemy.gridManager.GetPositionFromCoordinates(path[1].coordinates));
+        //path.Remove(path[0]);
     }
 
     private IEnumerator FollowPath()
     {
-        for (int i = 0; i < path.Count; i++)
+        for (int i = 1; i < path.Count; i++)
         {
-            //Debug.Log(i);
             Vector3 startPos = transform.position;
             Vector3 endPos = enemy.gridManager.GetPositionFromCoordinates(path[i].coordinates);
             float travelPercent = 0f;
