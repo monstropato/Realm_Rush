@@ -6,13 +6,10 @@ using TMPro;
 public class CoordinateLabeler : MonoBehaviour
 {
     //CONFIG PARAMS
-    [Header("Color")]
     [SerializeField] Color defaultColor = Color.white;
     [SerializeField] Color blockedColor = Color.gray;
     [SerializeField] Color exploredColor = Color.yellow;
     [SerializeField] Color pathColor = new Color(1f, 0.5f, 0f);
-    [Header("Grid")]
-    [SerializeField] float snapSettings = 10f;
 
     //CACHED COMPONENT REFERENCES
     TextMeshPro textCoordinates;
@@ -60,8 +57,8 @@ public class CoordinateLabeler : MonoBehaviour
 
     private void CalculateCoordinates()
     {
-        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / snapSettings);
-        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / snapSettings);
+        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / gridManager.GridSnapSize);
+        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / gridManager.GridSnapSize);
     }
 
     private void DisplayCoordinates()

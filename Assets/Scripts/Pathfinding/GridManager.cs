@@ -6,12 +6,14 @@ public class GridManager : MonoBehaviour
 {
     //CONFIG PARAMS
     [SerializeField] Vector2Int gridSize;
+    [SerializeField] int gridSnapSize = 10;
 
     //STATS
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
 
     //PROPERTIES
     public Dictionary<Vector2Int, Node> Grid { get { return grid; } }
+    public int GridSnapSize { get { return gridSnapSize; } }
 
 
     private void Awake()
