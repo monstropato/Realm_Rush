@@ -14,6 +14,7 @@ public class Tile : MonoBehaviour
 
     //CACHED EXTERNAL REFERENCES
     GridManager gridManager;
+    Pathfinder pathfinder;
 
     //PROPERTIES
     public bool IsPlaceable { get { return isPlaceable; } }
@@ -21,6 +22,7 @@ public class Tile : MonoBehaviour
     private void Awake()
     {
         gridManager = FindObjectOfType<GridManager>();
+        pathfinder = FindObjectOfType<Pathfinder>();
         coorLabeler = GetComponentInChildren<CoordinateLabeler>();
     }
 
@@ -38,10 +40,13 @@ public class Tile : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0) && isPlaceable)
+        if (Input.GetMouseButtonDown(0) &&
+            gridManager.GetNode(coordinates).isWalkable &&
+            !pathfinder.WillBlockPath(coordinates))
         {
             bool isPlaced = towerPrefab.CreateTower(towerPrefab, transform.position, coorLabeler.Coordinates);
             isPlaceable = !isPlaced;
+            gridManager.BlockNode(coordinates);
         }
     }
 }
