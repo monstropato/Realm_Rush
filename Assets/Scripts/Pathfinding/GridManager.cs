@@ -4,13 +4,31 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
+    //CONFIG PARAMS
     [SerializeField] Vector2Int gridSize;
 
+    //STATS
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
+
+    //PROPERTIES
+    Dictionary<Vector2Int, Node> Grid { get { return grid; } }
+
 
     private void Awake()
     {
         CreateGrid();
+    }
+
+    public Node GetNode(Vector2Int coordinate)
+    {
+        if (grid.ContainsKey(coordinate))
+        {
+            return grid[coordinate];
+        }
+        else
+        {
+            return null;
+        }
     }
 
     private void CreateGrid()
@@ -21,7 +39,6 @@ public class GridManager : MonoBehaviour
             {
                 Vector2Int coordinates = new Vector2Int(x, y);
                 grid.Add(coordinates, new Node(coordinates, true));
-                Debug.Log($"{grid[coordinates].coordinates} = {grid[coordinates].isWalkable}");
             }
         }
     }

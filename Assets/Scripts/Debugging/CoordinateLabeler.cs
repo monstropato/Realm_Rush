@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEditor;
 using TMPro;
 
 [ExecuteAlways]
@@ -7,24 +6,32 @@ using TMPro;
 public class CoordinateLabeler : MonoBehaviour
 {
     //CONFIG PARAMS
+    [Header("Color")]
     [SerializeField] Color defaultColor = Color.white;
     [SerializeField] Color blockedColor = Color.gray;
+    [SerializeField] Color exploredColor = Color.yellow;
+    [SerializeField] Color pathColor = new Color(1f, 0.5f, 0f);
+    [Header("Grid")]
+    [SerializeField] float snapSettings = 10f;
 
     //CACHED COMPONENT REFERENCES
     TextMeshPro textCoordinates;
-    Waypoint waypoint;
 
+    //CACHED EXTERNAL REFERENCES
+    GridManager gridManager;
     //STATS
     private Vector2Int coordinates = new Vector2Int();
 
-    //GET PARAMS
+    //PROPERTIES
     public Vector2Int Coordinates { get { return coordinates; } }
 
     private void Awake()
     {
+        //IN PLAY MODE
+        gridManager = FindObjectOfType<GridManager>();
         textCoordinates = GetComponent<TextMeshPro>();
         textCoordinates.enabled = false;
-        waypoint = GetComponentInParent<Waypoint>();
+        CalculateCoordinates();
         DisplayCoordinates();
     }
 
@@ -32,7 +39,9 @@ public class CoordinateLabeler : MonoBehaviour
     {
         if (!Application.isPlaying)
         {
+            //IN EDITOR MODE
             textCoordinates.enabled = true;
+            CalculateCoordinates();
             DisplayCoordinates();
             UpdateObjectName();
         }
@@ -49,16 +58,15 @@ public class CoordinateLabeler : MonoBehaviour
         }
     }
 
+    private void CalculateCoordinates()
+    {
+        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / snapSettings);
+        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / snapSettings);
+    }
+
     private void DisplayCoordinates()
     {
-        if (Debug.isDebugBuild)
-        {
-            coordinates.x = Mathf.RoundToInt(transform.parent.position.x / EditorSnapSettings.move.x);
-            coordinates.y = Mathf.RoundToInt(transform.parent.position.z / EditorSnapSettings.move.z);
-
-            textCoordinates.text = $"{coordinates}";
-        }
-        
+        textCoordinates.text = $"{coordinates}";
     }
 
     private void UpdateObjectName()
@@ -68,13 +76,26 @@ public class CoordinateLabeler : MonoBehaviour
 
     private void SetLabelcolor()
     {
-        if (waypoint.IsPlaceable)
+        if(!gridManager) { return; }
+
+        Node node = gridManager.GetNode(coordinates);
+        if (node == null) { return; }
+
+        if (!node.isWalkable)
         {
-            textCoordinates.color = defaultColor;
+            textCoordinates.color = blockedColor;
+        }
+        else if (node.isPath)
+        {
+            textCoordinates.color = pathColor;
+        }
+        else if (node.isExplored)
+        {
+            textCoordinates.color = exploredColor;
         }
         else
         {
-            textCoordinates.color = blockedColor;
+            textCoordinates.color = defaultColor;
         }
     }
 }
