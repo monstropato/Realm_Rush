@@ -10,6 +10,12 @@ public class GridManager : MonoBehaviour
 
     //STATS
     Dictionary<Vector2Int, Node> grid = new Dictionary<Vector2Int, Node>();
+    #region What is a Dictionary?
+    //dictionaries stores a key-value pair. Like a real physical dictionary, the key would be the word, and the value, the description.
+    //keys are linked to value, must be unique, can't be null, and are usually very simple. In this game, they are the coordinates.
+    //values can be more complex types and can be null. In this game, they are the Node.
+    //The lookup is very fast from key to value, but slow in the other way
+    #endregion
 
     //PROPERTIES
     public Dictionary<Vector2Int, Node> Grid { get { return grid; } }
@@ -21,6 +27,20 @@ public class GridManager : MonoBehaviour
         CreateGrid();
     }
 
+    private void CreateGrid()
+    {
+        for (int x = 0; x < gridSize.x; x++)
+        {
+            for (int y = 0; y < gridSize.y; y++)
+            {
+                Vector2Int coordinates = new Vector2Int(x, y);
+                grid.Add(coordinates, new Node(coordinates, true));
+                //TODO: Make so is only added to the grid where it have tiles
+                //Debug.Log($"{grid[coordinates].coordinates} = {grid[coordinates].isWalkable}");
+            }
+        }
+    }
+
     public Node GetNode(Vector2Int coordinate)
     {
         if (grid.ContainsKey(coordinate))
@@ -30,18 +50,6 @@ public class GridManager : MonoBehaviour
         else
         {
             return null;
-        }
-    }
-
-    private void CreateGrid()
-    {
-        for (int x = 0; x < gridSize.x; x++)
-        {
-            for (int y = 0; y < gridSize.y; y++)
-            {
-                Vector2Int coordinates = new Vector2Int(x, y);
-                grid.Add(coordinates, new Node(coordinates, true));
-            }
         }
     }
 }
