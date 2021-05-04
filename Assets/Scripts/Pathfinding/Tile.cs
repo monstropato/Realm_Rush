@@ -6,15 +6,34 @@ public class Tile : MonoBehaviour
     [SerializeField] Tower towerPrefab;
     [SerializeField] bool isPlaceable;
 
+    //STATS
+    Vector2Int coordinates = new Vector2Int();
+
     //CACHED CLASSES REFERENCES
     CoordinateLabeler coorLabeler;
 
-    //GET PARAMS
+    //CACHED EXTERNAL REFERENCES
+    GridManager gridManager;
+
+    //PROPERTIES
     public bool IsPlaceable { get { return isPlaceable; } }
+
+    private void Awake()
+    {
+        gridManager = FindObjectOfType<GridManager>();
+        coorLabeler = GetComponentInChildren<CoordinateLabeler>();
+    }
 
     private void Start()
     {
-        coorLabeler = GetComponentInChildren<CoordinateLabeler>();
+        if (gridManager)
+        {
+            coordinates = gridManager.GetCoordinatesFromPosition(transform.position);
+            if (!isPlaceable)
+            {
+                gridManager.BlockNode(coordinates);
+            }
+        }
     }
 
     private void OnMouseOver()

@@ -28,7 +28,7 @@ public class CoordinateLabeler : MonoBehaviour
         gridManager = FindObjectOfType<GridManager>();
         textCoordinates = GetComponent<TextMeshPro>();
         textCoordinates.enabled = false;
-        CalculateCoordinates();
+        coordinates = gridManager.GetCoordinatesFromPosition(transform.parent.position);
         DisplayCoordinates();
     }
 
@@ -38,7 +38,7 @@ public class CoordinateLabeler : MonoBehaviour
         {
             //IN EDITOR MODE
             textCoordinates.enabled = true;
-            CalculateCoordinates();
+            coordinates = gridManager.GetCoordinatesFromPosition(transform.parent.position);
             DisplayCoordinates();
             UpdateObjectName();
         }
@@ -53,12 +53,6 @@ public class CoordinateLabeler : MonoBehaviour
         {
             textCoordinates.enabled = !textCoordinates.IsActive();
         }
-    }
-
-    private void CalculateCoordinates()
-    {
-        coordinates.x = Mathf.RoundToInt(transform.parent.position.x / gridManager.GridSnapSize);
-        coordinates.y = Mathf.RoundToInt(transform.parent.position.z / gridManager.GridSnapSize);
     }
 
     private void DisplayCoordinates()
