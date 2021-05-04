@@ -18,22 +18,32 @@ internal class EnemyMovement : MonoBehaviour
     {
         enemy = GetComponent<Enemy>();
 
-        RecalculatePath();
         ReturnToStart();
-        StartCoroutine(FollowPath());
+        RecalculatePath(true);
     }
 
-    private void RecalculatePath()
+    private void RecalculatePath(bool resetPath)
     {
+        Vector2Int coordinates = new Vector2Int();
+        if (resetPath)
+        {
+            coordinates = enemy.pathfinder.StartNode.coordinates;
+        }
+        else
+        {
+            coordinates = enemy.gridManager.GetCoordinatesFromPosition(transform.position);
+        }
+
+        StopAllCoroutines();
         path.Clear();
-        path = enemy.pathfinder.GetNewPath();
+        path = enemy.pathfinder.GetNewPath(coordinates);
+        StartCoroutine(FollowPath());
     }
 
     private void ReturnToStart()
     {
-        transform.position = enemy.gridManager.GetPositionFromCoordinates(enemy.pathfinder.StartNode.coordinates);
-        transform.LookAt(enemy.gridManager.GetPositionFromCoordinates(path[1].coordinates));
-        //path.Remove(path[0]);
+        Vector3 startPos = enemy.gridManager.GetPositionFromCoordinates(enemy.pathfinder.StartNode.coordinates);
+        transform.position = startPos;
     }
 
     private IEnumerator FollowPath()
