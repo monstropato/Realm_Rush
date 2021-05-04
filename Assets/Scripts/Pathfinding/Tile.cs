@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Waypoint : MonoBehaviour
+public class Tile : MonoBehaviour
 {
     //CONFIG PARAMS
     [SerializeField] Tower towerPrefab;

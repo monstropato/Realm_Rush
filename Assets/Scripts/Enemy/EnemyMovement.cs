@@ -8,7 +8,7 @@ internal class EnemyMovement : MonoBehaviour
     [SerializeField][Range(0f,5f)] float speed =1f;
 
     //STATS
-    List<Waypoint> path = new List<Waypoint>();
+    List<Tile> path = new List<Tile>();
 
     //CACHED CLASSES REFERENCES
     Enemy enemy;
@@ -33,7 +33,7 @@ internal class EnemyMovement : MonoBehaviour
 
         foreach(Transform child in parent.transform)
         {
-            path.Add(child.GetComponent<Waypoint>());
+            path.Add(child.GetComponent<Tile>());
         }
     }
 
@@ -45,7 +45,7 @@ internal class EnemyMovement : MonoBehaviour
 
     private IEnumerator FollowPatch()
     {
-        foreach(Waypoint waypoint in path)
+        foreach(Tile waypoint in path)
         {
             Vector3 startPos = transform.position;
             Vector3 endPos = waypoint.transform.position;

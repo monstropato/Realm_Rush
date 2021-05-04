@@ -52,4 +52,28 @@ public class GridManager : MonoBehaviour
             return null;
         }
     }
+
+    public void BlockNode(Vector2Int coordinate)
+    {
+        if (grid.ContainsKey(coordinate))
+        {
+            grid[coordinate].isWalkable = false;
+        }
+    }
+
+    public Vector2Int GetCoordinatesFromPosition(Vector3 position)
+    {
+        Vector2Int coordinates = new Vector2Int();
+        coordinates.x = Mathf.RoundToInt(position.x / GridSnapSize);
+        coordinates.y = Mathf.RoundToInt(position.z / GridSnapSize);
+        return coordinates;
+    }
+
+    public Vector3 GetPositionFromCoordinates(Vector2Int coordinates)
+    {
+        Vector3 position = new Vector3();
+        position.x = Mathf.RoundToInt(position.x * GridSnapSize);
+        position.z = Mathf.RoundToInt(position.y * GridSnapSize);
+        return position;
+    }
 }

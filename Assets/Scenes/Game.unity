@@ -8140,19 +8140,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 321258247, guid: a6f264e50b29daa439bb698afceb227f, type: 3}
       propertyPath: startCoordinates.x
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 321258247, guid: a6f264e50b29daa439bb698afceb227f, type: 3}
       propertyPath: startCoordinates.y
-      value: 9
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 321258247, guid: a6f264e50b29daa439bb698afceb227f, type: 3}
       propertyPath: destinationCoordinates.x
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 321258247, guid: a6f264e50b29daa439bb698afceb227f, type: 3}
       propertyPath: destinationCoordinates.y
-      value: 4
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 321258247, guid: a6f264e50b29daa439bb698afceb227f, type: 3}
       propertyPath: currentSearchNode.coordinates.x
