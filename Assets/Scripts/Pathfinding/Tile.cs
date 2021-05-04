@@ -35,13 +35,20 @@ public class Tile : MonoBehaviour
             {
                 gridManager.BlockNode(coordinates);
             }
+
+            if(gridManager.Grid[coordinates] == pathfinder.StartNode || gridManager.Grid[coordinates] == pathfinder.DestinationNode)
+            {
+                isPlaceable = false;
+            }
         }
+
     }
 
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0) &&
             gridManager.GetNode(coordinates).isWalkable &&
+            isPlaceable &&
             !pathfinder.WillBlockPath(coordinates))
         {
             bool isSucessful = towerPrefab.CreateTower(towerPrefab, transform.position, coorLabeler.Coordinates);
