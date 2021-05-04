@@ -32,19 +32,24 @@ public class Pathfinder : MonoBehaviour
     //CACHED EXTERNAL REFERENCES
     GridManager gridManager;
 
+    //PROPERTIES
+    public Node StartNode{ get { return startNode; } }
+    public Node DestinationNode { get { return destinationNode; } }
+
 
     private void Awake()
     {
         gridManager = FindObjectOfType<GridManager>();
+
+        startNode = gridManager.Grid[startCoordinates];
+        destinationNode = gridManager.Grid[destinationCoordinates];
     }
     void Start()
     {
-        startNode = gridManager.Grid[startCoordinates];
-        destinationNode = gridManager.Grid[destinationCoordinates];
         GetNewPath();
     }
 
-    private List<Node> GetNewPath()
+    public List<Node> GetNewPath()
     {
         gridManager.ResetNodes();
         frontier.Clear();
@@ -56,6 +61,9 @@ public class Pathfinder : MonoBehaviour
 
     private void BreadthFirstSearch()
     {
+        startNode.isWalkable = true;
+        destinationNode.isWalkable = true;
+
         bool isRunning = true;
 
         frontier.Enqueue(startNode);
@@ -64,7 +72,7 @@ public class Pathfinder : MonoBehaviour
         while(frontier.Count > 0 && isRunning)
         {
             currentSearchNode = frontier.Dequeue();
-            Debug.Log(currentSearchNode.coordinates);
+            //Debug.Log(currentSearchNode.coordinates);
             currentSearchNode.isExplored = true;
             ExploreNeighbours();
             if(currentSearchNode == destinationNode)

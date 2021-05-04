@@ -16,10 +16,16 @@ public class Enemy : MonoBehaviour
 
     //CACHED EXTERNAL REFERENCES
     internal Bank bank;
+    internal Pathfinder pathfinder;
+    internal GridManager gridManager;
+
+    private void Awake()
+    {
+        GetCachedReferences();
+    }
 
     private void OnEnable()
     {
-        GetCachedReferences();
         StartCustomStarts();
     }
 
@@ -32,6 +38,8 @@ public class Enemy : MonoBehaviour
         enemyCurrency = GetComponent<EnemyCurrency>();
 
         bank = FindObjectOfType<Bank>();
+        pathfinder = FindObjectOfType<Pathfinder>();
+        gridManager = FindObjectOfType<GridManager>();
     }
 
     private void StartCustomStarts()

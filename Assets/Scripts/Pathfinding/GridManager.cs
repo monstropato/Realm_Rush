@@ -82,8 +82,8 @@ public class GridManager : MonoBehaviour
     public Vector3 GetPositionFromCoordinates(Vector2Int coordinates)
     {
         Vector3 position = new Vector3();
-        position.x = Mathf.RoundToInt(position.x * gridSnapSize);
-        position.z = Mathf.RoundToInt(position.y * gridSnapSize);
+        position.x = Mathf.RoundToInt(coordinates.x * gridSnapSize);
+        position.z = Mathf.RoundToInt(coordinates.y * gridSnapSize);
         return position;
     }
 }

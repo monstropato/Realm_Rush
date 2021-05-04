@@ -8,13 +8,10 @@ internal class EnemyMovement : MonoBehaviour
     [SerializeField][Range(0f,5f)] float speed =1f;
 
     //STATS
-    List<Tile> path = new List<Tile>();
+    List<Node> path = new List<Node>();
 
     //CACHED CLASSES REFERENCES
     Enemy enemy;
-
-    //CACHED STRINGS
-    const string TAG_PATH = "Path";
 
 
     internal void CustomStart()
@@ -23,32 +20,28 @@ internal class EnemyMovement : MonoBehaviour
 
         FindPath();
         ReturnToStart();
-        StartCoroutine(FollowPatch());
+        StartCoroutine(FollowPath());
     }
 
     private void FindPath()
     {
         path.Clear();
-        GameObject parent = GameObject.FindGameObjectWithTag(TAG_PATH);
-
-        foreach(Transform child in parent.transform)
-        {
-            path.Add(child.GetComponent<Tile>());
-        }
+        path = enemy.pathfinder.GetNewPath();
     }
 
     private void ReturnToStart()
     {
-        transform.position = path[0].transform.position;
+        transform.position = enemy.gridManager.GetPositionFromCoordinates(enemy.pathfinder.StartNode.coordinates);
         path.Remove(path[0]);
     }
 
-    private IEnumerator FollowPatch()
+    private IEnumerator FollowPath()
     {
-        foreach(Tile waypoint in path)
+        for (int i = 0; i < path.Count; i++)
         {
+            //Debug.Log(i);
             Vector3 startPos = transform.position;
-            Vector3 endPos = waypoint.transform.position;
+            Vector3 endPos = enemy.gridManager.GetPositionFromCoordinates(path[i].coordinates);
             float travelPercent = 0f;
 
             transform.LookAt(endPos);
@@ -64,7 +57,7 @@ internal class EnemyMovement : MonoBehaviour
 
     private void FinishPath()
     {
-        transform.position = path[path.Count - 1].transform.position;
+        transform.position = enemy.gridManager.GetPositionFromCoordinates(enemy.pathfinder.DestinationNode.coordinates);
         enemy.Despawn();
         enemy.enemyCurrency.StealGold();
     }
