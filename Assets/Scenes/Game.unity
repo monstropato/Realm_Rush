@@ -329,6 +329,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1799355827}
     m_Modifications:
+    - target: {fileID: 4456856879812548225, guid: c789fb1ce68db7841807cefddee557e0, type: 3}
+      propertyPath: isPlaceable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6506024328865544416, guid: c789fb1ce68db7841807cefddee557e0, type: 3}
       propertyPath: m_Name
       value: Tile (3, 0)
@@ -1167,6 +1171,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1799355827}
     m_Modifications:
+    - target: {fileID: 4456856879812548225, guid: c789fb1ce68db7841807cefddee557e0, type: 3}
+      propertyPath: isPlaceable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6506024328865544416, guid: c789fb1ce68db7841807cefddee557e0, type: 3}
       propertyPath: m_Name
       value: Tile (1, 0)
@@ -3664,6 +3672,10 @@ PrefabInstance:
     - target: {fileID: 5890749391065041918, guid: 4eb20231224a04d43b865ba2822ad783, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890749391065041919, guid: 4eb20231224a04d43b865ba2822ad783, type: 3}
+      propertyPath: startBalance
+      value: 5000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eb20231224a04d43b865ba2822ad783, type: 3}
